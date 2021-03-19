@@ -1,10 +1,16 @@
 package com.lambdaschool.zoo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "zoos")
-public class Zoo {
+public class Zoo extends Auditable {
 
 //    INSERT INTO zoos (zooid, zooname, createdby, createddate, lastmodifiedby, lastmodifieddate)
     @Id
@@ -14,21 +20,22 @@ public class Zoo {
     @Column(nullable = false)
     private String zooname;
 
-    private String createdby;
-    private String createddate;
-    private String lastmodifiedby;
-    private String lastmodifieddate;
+    @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("zoo")
+    private List<Telephone> telephones = new ArrayList<>();
+
+    @OneToMany(mappedBy = "zoo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("zoo")
+    private Set<ZooAnimal> animals = new HashSet<>();
 
     public Zoo() {
     }
 
-    public Zoo(long zooid, String zooname, String createdby, String createddate, String lastmodifiedby, String lastmodifieddate) {
+    public Zoo(long zooid, String zooname, List<Telephone> telephones, Set<ZooAnimal> animals) {
         this.zooid = zooid;
         this.zooname = zooname;
-        this.createdby = createdby;
-        this.createddate = createddate;
-        this.lastmodifiedby = lastmodifiedby;
-        this.lastmodifieddate = lastmodifieddate;
+        this.telephones = telephones;
+        this.animals = animals;
     }
 
     public long getZooid() {
@@ -47,35 +54,19 @@ public class Zoo {
         this.zooname = zooname;
     }
 
-    public String getCreatedby() {
-        return createdby;
+    public List<Telephone> getTelephones() {
+        return telephones;
     }
 
-    public void setCreatedby(String createdby) {
-        this.createdby = createdby;
+    public void setTelephones(List<Telephone> telephones) {
+        this.telephones = telephones;
     }
 
-    public String getCreateddate() {
-        return createddate;
+    public Set<ZooAnimal> getAnimals() {
+        return animals;
     }
 
-    public void setCreateddate(String createddate) {
-        this.createddate = createddate;
-    }
-
-    public String getLastmodifiedby() {
-        return lastmodifiedby;
-    }
-
-    public void setLastmodifiedby(String lastmodifiedby) {
-        this.lastmodifiedby = lastmodifiedby;
-    }
-
-    public String getLastmodifieddate() {
-        return lastmodifieddate;
-    }
-
-    public void setLastmodifieddate(String lastmodifieddate) {
-        this.lastmodifieddate = lastmodifieddate;
+    public void setAnimals(Set<ZooAnimal> animals) {
+        this.animals = animals;
     }
 }

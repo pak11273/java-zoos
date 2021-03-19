@@ -31,4 +31,5 @@ public class ZooServiceImpl implements ZooService {
                 .findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Zoo id " + id + " not found."));
     }
+
 }

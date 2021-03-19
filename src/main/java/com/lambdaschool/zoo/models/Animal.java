@@ -1,10 +1,14 @@
 package com.lambdaschool.zoo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "animals")
-public class Animal {
+public class Animal extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long animalid;
@@ -12,21 +16,17 @@ public class Animal {
     @Column(nullable = false)
     private String animaltype;
 
-    private String createdby;
-    private String createddate;
-    private String lastmodifiedby;
-    private String lastmodifieddate;
+    @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties(value = "animal", allowSetters = true)
+    private Set<ZooAnimal> zoos = new HashSet<>();
 
     public Animal() {
     }
 
-    public Animal(long animalid, String animaltype, String createdby, String createddate, String lastmodifiedby, String lastmodifieddate) {
+    public Animal(long animalid, String animaltype, Set<ZooAnimal> zoos) {
         this.animalid = animalid;
         this.animaltype = animaltype;
-        this.createdby = createdby;
-        this.createddate = createddate;
-        this.lastmodifiedby = lastmodifiedby;
-        this.lastmodifieddate = lastmodifieddate;
+        this.zoos = zoos;
     }
 
     public long getAnimalid() {
@@ -45,35 +45,11 @@ public class Animal {
         this.animaltype = animaltype;
     }
 
-    public String getCreatedby() {
-        return createdby;
+    public Set<ZooAnimal> getZoos() {
+        return zoos;
     }
 
-    public void setCreatedby(String createdby) {
-        this.createdby = createdby;
-    }
-
-    public String getCreateddate() {
-        return createddate;
-    }
-
-    public void setCreateddate(String createddate) {
-        this.createddate = createddate;
-    }
-
-    public String getLastmodifiedby() {
-        return lastmodifiedby;
-    }
-
-    public void setLastmodifiedby(String lastmodifiedby) {
-        this.lastmodifiedby = lastmodifiedby;
-    }
-
-    public String getLastmodifieddate() {
-        return lastmodifieddate;
-    }
-
-    public void setLastmodifieddate(String lastmodifieddate) {
-        this.lastmodifieddate = lastmodifieddate;
+    public void setZoos(Set<ZooAnimal> zoos) {
+        this.zoos = zoos;
     }
 }

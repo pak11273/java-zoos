@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "telephones")
-public class Telephone {
+public class Telephone extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,29 +17,20 @@ public class Telephone {
 
     @ManyToOne
     @JoinColumn(name = "zooid", nullable = false)
-    @JsonIgnoreProperties(value = "telephones")
+    @JsonIgnoreProperties(value = "telephones", allowSetters = true)
     private Zoo zoo;
-//    INSERT INTO telephones (phoneid, phonetype, phonenumber, zooid, createdby, createddate, lastmodifiedby,
 
+    @Column(nullable = false)
     private String phonenumber;
-
-    private String createdby;
-    private String createddate;
-    private String lastmodifiedby;
-    private String lastmodifieddate;
 
     public Telephone() {
     }
 
-    public Telephone(long phoneid, String phonetype, Zoo zoo, String phonenumber, String createdby, String createddate, String lastmodifiedby, String lastmodifieddate) {
+    public Telephone(long phoneid, String phonetype, Zoo zoo, String phonenumber) {
         this.phoneid = phoneid;
         this.phonetype = phonetype;
         this.zoo = zoo;
         this.phonenumber = phonenumber;
-        this.createdby = createdby;
-        this.createddate = createddate;
-        this.lastmodifiedby = lastmodifiedby;
-        this.lastmodifieddate = lastmodifieddate;
     }
 
     public long getPhoneid() {
@@ -72,37 +63,5 @@ public class Telephone {
 
     public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
-    }
-
-    public String getCreatedby() {
-        return createdby;
-    }
-
-    public void setCreatedby(String createdby) {
-        this.createdby = createdby;
-    }
-
-    public String getCreateddate() {
-        return createddate;
-    }
-
-    public void setCreateddate(String createddate) {
-        this.createddate = createddate;
-    }
-
-    public String getLastmodifiedby() {
-        return lastmodifiedby;
-    }
-
-    public void setLastmodifiedby(String lastmodifiedby) {
-        this.lastmodifiedby = lastmodifiedby;
-    }
-
-    public String getLastmodifieddate() {
-        return lastmodifieddate;
-    }
-
-    public void setLastmodifieddate(String lastmodifieddate) {
-        this.lastmodifieddate = lastmodifieddate;
     }
 }

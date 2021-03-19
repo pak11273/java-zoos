@@ -20,7 +20,6 @@ public class AnimalController {
     // http://localhost:2019/animals/count
     @GetMapping(value = "/count", produces = "application/json")
     public ResponseEntity<?> findAnimalCount() {
-        List<Animal> animals = animalService.findAnimalCount();
-        return new ResponseEntity<>(animals, HttpStatus.OK);
+        return new ResponseEntity<>(animalService.findAnimalCount(), HttpStatus.OK);
     }
 }
