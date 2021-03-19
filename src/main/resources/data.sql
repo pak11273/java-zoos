@@ -25,15 +25,15 @@ VALUES (1, 'MAIN', '555-555-5555', 1, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CUR
        (4, 'MAIN', '123-555-5555', 4, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
        (5, 'MAIN', '555-123-5555', 3, 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
 
--- INSERT INTO animals (animalid, animaltype, createdby, createddate, lastmodifiedby, lastmodifieddate)
--- VALUES (1, 'lion', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
---        (2, 'bear', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
---        (3, 'monkey', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
---        (4, 'penguin', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
---        (5, 'tiger', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
---        (6, 'llama', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
---        (7, 'turtle', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
---
+INSERT INTO animals (animalid, animaltype, createdby, createddate, lastmodifiedby, lastmodifieddate)
+VALUES (1, 'lion', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (2, 'bear', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (3, 'monkey', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (4, 'penguin', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (5, 'tiger', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (6, 'llama', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
+       (7, 'turtle', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP);
+
 -- INSERT INTO zooanimals (zooid, animalid, incomingzoo, createdby, createddate, lastmodifiedby, lastmodifieddate)
 -- VALUES (1, 1, 'Point Defiance Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
 --        (2, 2, 'Gladys Porter Zoo', 'SYSTEM', CURRENT_TIMESTAMP, 'SYSTEM', CURRENT_TIMESTAMP),
